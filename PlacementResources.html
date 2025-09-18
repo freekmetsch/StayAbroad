@@ -79,62 +79,6 @@
             box-shadow: var(--card-shadow);
         }
 
-        .filters {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-            box-shadow: var(--card-hover);
-            animation: fadeIn 0.8s ease;
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .filter-group label {
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .filter-group select,
-        .filter-group input[type="text"] {
-            padding: 10px 15px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            min-width: 200px;
-        }
-
-        .filter-group select:focus,
-        .filter-group input[type="text"]:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .filter-btn {
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--card-shadow);
-        }
-
         .country-card {
             background: white;
             border-radius: 15px;
@@ -456,42 +400,6 @@
             <h3>⚠️ Jobs to be Wary Of</h3>
             <p><strong>Au-pairing:</strong> Our students have not had the best experiences. If you do want to become an au-pair, go through an official company and check reviews.</p>
             <p><strong>Seasonal farm work:</strong> Check reviews carefully. Some farms have poor sleeping conditions, little supervision, crazy hours, or no wifi.</p>
-        </div>
-
-        <div class="filters">
-            <div class="filter-group">
-                <label for="search">🔍 Search:</label>
-                <input type="text" id="search" placeholder="Search placements...">
-                
-                <label for="countryFilter">📍 Country:</label>
-                <select id="countryFilter">
-                    <option value="all">All Countries</option>
-                    <option value="ireland">Ireland</option>
-                    <option value="uk">United Kingdom</option>
-                    <option value="usa">United States</option>
-                    <option value="canada">Canada</option>
-                    <option value="australia">Australia & NZ</option>
-                    <option value="south-africa">South Africa</option>
-                    <option value="worldwide">Multiple Countries</option>
-                </select>
-                
-                <label for="typeFilter">💼 Type:</label>
-                <select id="typeFilter">
-                    <option value="all">All Types</option>
-                    <option value="paid">Paid Positions</option>
-                    <option value="volunteer">Volunteer</option>
-                </select>
-                
-                <label for="visaFilter">📋 Visa:</label>
-                <select id="visaFilter">
-                    <option value="all">All</option>
-                    <option value="easy">Easy/No Visa</option>
-                    <option value="required">Visa Required</option>
-                </select>
-                
-                <button class="filter-btn" onclick="applyFilters()">Apply Filters</button>
-                <button class="filter-btn" onclick="resetFilters()">Reset</button>
-            </div>
         </div>
 
         <div id="countriesContainer">
