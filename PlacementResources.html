@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stay Abroad Placement Explorer 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 5px solid var(--warning);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            animation: slideIn 0.6s ease;
+        }
+
+        .warning-box h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .filters {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: var(--card-hover);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .filter-group select,
+        .filter-group input[type="text"] {
+            padding: 10px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .filter-group select:focus,
+        .filter-group input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .country-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-hover);
+        }
+
+        .country-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .country-header h2 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5em;
+        }
+
+        .country-flag {
+            font-size: 2em;
+        }
+
+        .visa-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .visa-required {
+            background: var(--danger);
+            color: white;
+        }
+
+        .visa-easy {
+            background: var(--success);
+            color: white;
+        }
+
+        .visa-varies {
+            background: var(--warning);
+            color: white;
+        }
+
+        .country-content {
+            padding: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .country-card.expanded .country-content {
+            max-height: 2000px;
+        }
+
+        .expand-indicator {
+            float: right;
+            transition: transform 0.3s ease;
+        }
+
+        .country-card.expanded .expand-indicator {
+            transform: rotate(180deg);
+        }
+
+        .placement-item {
+            background: var(--light);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .placement-item:hover {
+            background: #e5e7eb;
+            transform: translateX(5px);
+        }
+
+        .placement-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .placement-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 1.1em;
+        }
+
+        .placement-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tag-paid {
+            background: #d1fae5;
+            color: #047857;
+        }
+
+        .tag-volunteer {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .tag-housing {
+            background: #ddd6fe;
+            color: #6d28d9;
+        }
+
+        .tag-recommended {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .placement-description {
+            color: var(--dark);
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .placement-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .placement-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        .placement-link::after {
+            content: ' →';
+        }
+
+        .quick-tips {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .quick-tips h2 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .tip-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 Stay Abroad Placement Explorer</h1>
+            <p>Find your perfect placement for your English teaching experience abroad</p>
+        </header>
+
+        <div class="warning-box">
+            <h3>⏰ Start Early!</h3>
+            <p><strong>Begin your search at least one year before your planned departure.</strong> Summer camps typically start accepting applications in December. Remember: You're looking for placements in English-speaking countries for a minimum of 10-12 weeks.</p>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label for="search">🔍 Search:</label>
+                <input type="text" id="search" placeholder="Search placements...">
+                
+                <label for="countryFilter">📍 Country:</label>
+                <select id="countryFilter">
+                    <option value="all">All Countries</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="ireland">Ireland</option>
+                    <option value="usa">United States</option>
+                    <option value="canada">Canada</option>
+                    <option value="australia">Australia & NZ</option>
+                    <option value="south-africa">South Africa</option>
+                </select>
+                
+                <label for="typeFilter">💼 Type:</label>
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="paid">Paid Positions</option>
+                    <option value="volunteer">Volunteer</option>
+                </select>
+                
+                <label for="visaFilter">📋 Visa:</label>
+                <select id="visaFilter">
+                    <option value="all">All</option>
+                    <option value="easy">Easy/No Visa</option>
+                    <option value="required">Visa Required</option>
+                </select>
+                
+                <button class="filter-btn" onclick="applyFilters()">Apply Filters</button>
+                <button class="filter-btn" onclick="resetFilters()">Reset</button>
+            </div>
+        </div>
+
+        <div class="countries-grid" id="countriesGrid">
+            <!-- Ireland Card -->
+            <div class="country-card" data-country="ireland" data-visa="easy">
+                <div class="country-header" onclick="toggleCard(this.parentElement)">
+                    <h2>
+                        <span class="country-flag">🇮🇪</span>
+                        Ireland
+                        <span class="expand-indicator">▼</span>
+                    </h2>
+                    <span class="visa-badge visa-easy">No Visa (EU)</span>
+                </div>
+                <div class="country-content">
+                    <p style="margin-bottom: 15px;"><strong>✨ Easiest option for EU nationals!</strong> No visa required and you can earn money. Eligible for Erasmus grant.</p>
+                    
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Oxfam Ireland</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Charity shop work and office-based roles in admin/events. They've expressed interest in our students!</p>
+                        <a href="https://www.oxfamireland.org/getinvolved/volunteer" class="placement-link" target="_blank">Learn more</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Presentation Secondary School, Wexford</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Teaching Assistant</span>
+                                <span class="tag tag-housing">Potential Housing</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Teaching assistant roles April-June, then admin/preparation work. Looking for flexible, communicative students. Contact: mdooleydeputyprincipal@preswex.ie</p>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Killary Adventure Company</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Remote outdoor adventure center. Need experience with climbing/kayaking/archery. 3+ months positions. Note: Very remote (8km to nearest shop, slow internet).</p>
+                        <a href="http://killaryadventure.com" class="placement-link" target="_blank">Visit website</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Four Courts Hostel, Dublin</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                                <span class="tag tag-recommended">Good Reviews</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Popular hostel with consistently positive feedback from our students.</p>
+                        <a href="http://www.fourcourtshostel.com" class="placement-link" target="_blank">Visit website</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Irish School of Archaeology</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Tutors and camp facilitators for children aged 6-12. Apply via email: info@sia.ie</p>
+                        <a href="https://sia.ie/about-the-school-of-irish-archaeology/" class="placement-link" target="_blank">Learn more</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- United States Card -->
+            <div class="country-card" data-country="usa" data-visa="required">
+                <div class="country-header" onclick="toggleCard(this.parentElement)">
+                    <h2>
+                        <span class="country-flag">🇺🇸</span>
+                        United States
+                        <span class="expand-indicator">▼</span>
+                    </h2>
+                    <span class="visa-badge visa-required">J-1 Visa Required</span>
+                </div>
+                <div class="country-content">
+                    <p style="margin-bottom: 15px;"><strong>⚠️ Important:</strong> J-1 visa required. Do NOT volunteer on tourist visa - it's illegal! Summer camps are easier for visas.</p>
+                    
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Camp Cobossee (Maine)</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                                <span class="tag tag-recommended">HU Partnership</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Our partner camp! We'll introduce this during the course. Start applying in December for summer positions.</p>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Fresh Air Fund</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                                <span class="tag tag-recommended">Recommended</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Great summer camp opportunity. Students consistently return with positive experiences.</p>
+                        <a href="http://www.freshair.org/work-at-camp" class="placement-link" target="_blank">Apply here</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">CCUSA</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Summer camps in US and Canada. ⚠️ Avoid their "work experience" option - stick to summer camps only!</p>
+                        <a href="http://www.ccusa.com" class="placement-link" target="_blank">Visit CCUSA</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Camp Leaders</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Another summer camp placement organization with J-1 visa sponsorship.</p>
+                        <a href="https://www.campleaders.com/ww" class="placement-link" target="_blank">Visit website</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- United Kingdom Card -->
+            <div class="country-card" data-country="uk" data-visa="required">
+                <div class="country-header" onclick="toggleCard(this.parentElement)">
+                    <h2>
+                        <span class="country-flag">🇬🇧</span>
+                        United Kingdom
+                        <span class="expand-indicator">▼</span>
+                    </h2>
+                    <span class="visa-badge visa-required">Very Difficult Post-Brexit</span>
+                </div>
+                <div class="country-content">
+                    <p style="margin-bottom: 15px;"><strong>⚠️ Brexit Alert:</strong> UK placements are extremely difficult now. Only Tier 5 authorized organizations can sponsor visas. Consider Ireland instead!</p>
+                    
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">AIESEC</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Student-run organization. Tier 5 authorized. Affordable but limited guidance. Contact Utrecht branch.</p>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">BUNAC</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid Programs</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Well-established but expensive. Tier 5 authorized.</p>
+                        <a href="https://bunac.org" class="placement-link" target="_blank">Visit BUNAC</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">PGL Camps</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">£482/month</span>
+                                <span class="tag tag-housing">Free Food & Housing</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Youth camps. Now accepts Youth Mobility Scheme visa (18+). Quick online application process.</p>
+                        <a href="http://www.pgl.co.uk" class="placement-link" target="_blank">Apply to PGL</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">30-Day Volunteer Option</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">New 2024 update: You can volunteer for up to 30 days without a work visa. Consider combining with family stay.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canada Card -->
+            <div class="country-card" data-country="canada" data-visa="varies">
+                <div class="country-header" onclick="toggleCard(this.parentElement)">
+                    <h2>
+                        <span class="country-flag">🇨🇦</span>
+                        Canada
+                        <span class="expand-indicator">▼</span>
+                    </h2>
+                    <span class="visa-badge visa-varies">Easier than USA</span>
+                </div>
+                <div class="country-content">
+                    <p style="margin-bottom: 15px;"><strong>Great alternative to USA!</strong> Generally safer, friendly people, easier visa process. Note: Quebec is French-speaking (not eligible).</p>
+                    
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Camp Canada</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Min. 1000 CAD</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Summer camp placements with visa assistance. Guaranteed minimum pay, can negotiate higher with camps.</p>
+                        <a href="https://www.campcanada.co.uk/" class="placement-link" target="_blank">Visit Camp Canada</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Ontario Camps (Direct)</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Higher Pay</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Apply directly to camps without agency = more money. But you'll need to arrange visa yourself.</p>
+                        <a href="https://ontariocampsassociation.ca/work-at-camp/" class="placement-link" target="_blank">Browse camps</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">CCUSA</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Summer camps in both US and Canada. Provides visa assistance.</p>
+                        <a href="http://www.ccusa.com" class="placement-link" target="_blank">Visit CCUSA</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Australia & New Zealand Card -->
+            <div class="country-card" data-country="australia" data-visa="required">
+                <div class="country-header" onclick="toggleCard(this.parentElement)">
+                    <h2>
+                        <span class="country-flag">🇦🇺</span>
+                        Australia & New Zealand
+                        <span class="expand-indicator">▼</span>
+                    </h2>
+                    <span class="visa-badge visa-required">Working Holiday Visa</span>
+                </div>
+                <div class="country-content">
+                    <p style="margin-bottom: 15px;"><strong>Working Holiday visa required.</strong> Consider combining with summer holidays as 10 weeks is short for this destination. With visa, you can apply for jobs directly!</p>
+                    
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Go Volunteer Australia</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Database of volunteer opportunities. You'll need to arrange accommodation separately.</p>
+                        <a href="http://www.govolunteer.com.au" class="placement-link" target="_blank">Browse opportunities</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Hostel Work</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Usually Unpaid</span>
+                                <span class="tag tag-housing">Free Board</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Contact hostels directly through YHA. Most offer free accommodation in exchange for work.</p>
+                        <a href="https://www.yha.com.au" class="placement-link" target="_blank">YHA Australia</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">GoEco Conservation</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Great Barrier Reef conservation, wildlife sanctuary work. Programs from 2-12 weeks.</p>
+                        <a href="http://www.goeco.com" class="placement-link" target="_blank">Visit GoEco</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- South Africa Card -->
+            <div class="country-card" data-country="south-africa" data-visa="varies">
+                <div class="country-header" onclick="toggleCard(this.parentElement)">
+                    <h2>
+                        <span class="country-flag">🇿🇦</span>
+                        South Africa
+                        <span class="expand-indicator">▼</span>
+                    </h2>
+                    <span class="visa-badge visa-varies">Research Required</span>
+                </div>
+                <div class="country-content">
+                    <p style="margin-bottom: 15px;"><strong>⚠️ Important:</strong> NO orphanage volunteering allowed (harmful practice). Research opportunities carefully - avoid "voluntourism" that takes jobs from locals.</p>
+                    
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">GoEco Wildlife Projects</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">26 projects available, mostly wildlife conservation. 1-12 week programs. Avoid any orphanage projects!</p>
+                        <a href="http://www.goeco.com" class="placement-link" target="_blank">Browse projects</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Research Carefully</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Various</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Many opportunities require payment and may fall under "voluntourism". Ensure your work doesn't take jobs from local residents.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-tips">
+            <h2>🎯 Quick Tips for Success</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">📅</div>
+                    <h3>Timeline</h3>
+                    <p>Start searching 12+ months ahead. Summer camps open applications in December!</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">📝</div>
+                    <h3>Visa First</h3>
+                    <p>Always confirm visa requirements BEFORE accepting any placement.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">⚠️</div>
+                    <h3>Avoid</h3>
+                    <p>Au-pair work (bad reviews), unvetted farm work, orphanage volunteering.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">💰</div>
+                    <h3>Erasmus Grant</h3>
+                    <p>Available for Ireland placements after May 31, 2023 (max 100 days).</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🏕️</div>
+                    <h3>Summer Camps</h3>
+                    <p>Great for CVs, easier visas, paid positions with housing included!</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">✅</div>
+                    <h3>Best Bet</h3>
+                    <p>Ireland for EU nationals - no visa needed and you can work legally!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle country card expansion
+        function toggleCard(card) {
+            card.classList.toggle('expanded');
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const country = document.getElementById('countryFilter').value;
+            const type = document.getElementById('typeFilter').value;
+            const visa = document.getElementById('visaFilter').value;
+            
+            const cards = document.querySelectorAll('.country-card');
+            
+            cards.forEach(card => {
+                let showCard = true;
+                
+                // Country filter
+                if (country !== 'all' && card.dataset.country !== country) {
+                    showCard = false;
+                }
+                
+                // Visa filter
+                if (visa !== 'all') {
+                    if (visa === 'easy' && card.dataset.visa !== 'easy') {
+                        showCard = false;
+                    }
+                    if (visa === 'required' && card.dataset.visa === 'easy') {
+                        showCard = false;
+                    }
+                }
+                
+                // Search filter
+                if (searchTerm && !card.textContent.toLowerCase().includes(searchTerm)) {
+                    showCard = false;
+                }
+                
+                // Type filter (check placements within card)
+                if (type !== 'all' && showCard) {
+                    const placements = card.querySelectorAll('.placement-item');
+                    let hasType = false;
+                    placements.forEach(placement => {
+                        if (placement.dataset.type === type) {
+                            hasType = true;
+                        }
+                    });
+                    if (!hasType) {
+                        showCard = false;
+                    }
+                }
+                
+                card.style.display = showCard ? 'block' : 'none';
+            });
+        }
+
+        // Reset filters
+        function resetFilters() {
+            document.getElementById('search').value = '';
+            document.getElementById('countryFilter').value = 'all';
+            document.getElementById('typeFilter').value = 'all';
+            document.getElementById('visaFilter').value = 'all';
+            
+            const cards = document.querySelectorAll('.country-card');
+            cards.forEach(card => {
+                card.style.display = 'block';
+            });
+        }
+
+        // Add enter key support for search
+        document.getElementById('search').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                applyFilters();
+            }
+        });
+    </script>
+</body>
+</html>
