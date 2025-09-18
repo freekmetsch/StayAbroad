@@ -32,7 +32,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -68,6 +68,15 @@
         .warning-box h3 {
             color: var(--dark);
             margin-bottom: 10px;
+        }
+
+        .danger-box {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-left: 5px solid var(--danger);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
         }
 
         .filters {
@@ -126,13 +135,6 @@
             box-shadow: var(--card-shadow);
         }
 
-        .countries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
         .country-card {
             background: white;
             border-radius: 15px;
@@ -140,40 +142,44 @@
             box-shadow: var(--card-shadow);
             transition: all 0.3s ease;
             animation: fadeInUp 0.6s ease;
+            margin-bottom: 30px;
+            width: 100%;
         }
 
         .country-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: var(--card-hover);
         }
 
         .country-header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            padding: 20px;
+            padding: 20px 30px;
             position: relative;
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .country-header h2 {
             display: flex;
             align-items: center;
             gap: 15px;
-            font-size: 1.5em;
+            font-size: 1.8em;
+            margin: 0;
         }
 
         .country-flag {
-            font-size: 2em;
+            font-size: 1.5em;
         }
 
         .visa-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 5px 12px;
+            padding: 8px 15px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.9em;
             font-weight: 600;
+            white-space: nowrap;
         }
 
         .visa-required {
@@ -192,23 +198,30 @@
         }
 
         .country-content {
-            padding: 20px;
+            padding: 30px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
         }
 
         .country-card.expanded .country-content {
-            max-height: 2000px;
+            max-height: 5000px;
         }
 
         .expand-indicator {
-            float: right;
+            font-size: 1.2em;
             transition: transform 0.3s ease;
+            margin-left: 10px;
         }
 
         .country-card.expanded .expand-indicator {
             transform: rotate(180deg);
+        }
+
+        .section-divider {
+            border-top: 2px solid var(--light);
+            margin: 25px 0;
+            padding-top: 20px;
         }
 
         .placement-item {
@@ -228,14 +241,16 @@
         .placement-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .placement-title {
             font-weight: 600;
             color: var(--primary-dark);
-            font-size: 1.1em;
+            font-size: 1.2em;
         }
 
         .placement-tags {
@@ -272,6 +287,11 @@
             color: #92400e;
         }
 
+        .tag-partnership {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
         .placement-description {
             color: var(--dark);
             line-height: 1.6;
@@ -294,6 +314,41 @@
 
         .placement-link::after {
             content: ' →';
+        }
+
+        .contact-info {
+            background: #e0f2fe;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .resource-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .resource-list li {
+            padding: 10px;
+            background: var(--light);
+            margin: 10px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-list li:hover {
+            background: #e5e7eb;
+            transform: translateX(5px);
+        }
+
+        .resource-list a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .resource-list a:hover {
+            color: var(--primary-dark);
         }
 
         .quick-tips {
@@ -375,18 +430,32 @@
         .hidden {
             display: none !important;
         }
+
+        .important-note {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--warning);
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🌍 Stay Abroad Placement Explorer</h1>
+            <h1>🌍 Stay Abroad Placement Explorer 2025</h1>
             <p>Find your perfect placement for your English teaching experience abroad</p>
         </header>
 
         <div class="warning-box">
             <h3>⏰ Start Early!</h3>
             <p><strong>Begin your search at least one year before your planned departure.</strong> Summer camps typically start accepting applications in December. Remember: You're looking for placements in English-speaking countries for a minimum of 10-12 weeks.</p>
+        </div>
+
+        <div class="danger-box">
+            <h3>⚠️ Jobs to be Wary Of</h3>
+            <p><strong>Au-pairing:</strong> Our students have not had the best experiences. If you do want to become an au-pair, go through an official company and check reviews.</p>
+            <p><strong>Seasonal farm work:</strong> Check reviews carefully. Some farms have poor sleeping conditions, little supervision, crazy hours, or no wifi.</p>
         </div>
 
         <div class="filters">
@@ -397,12 +466,13 @@
                 <label for="countryFilter">📍 Country:</label>
                 <select id="countryFilter">
                     <option value="all">All Countries</option>
-                    <option value="uk">United Kingdom</option>
                     <option value="ireland">Ireland</option>
+                    <option value="uk">United Kingdom</option>
                     <option value="usa">United States</option>
                     <option value="canada">Canada</option>
                     <option value="australia">Australia & NZ</option>
                     <option value="south-africa">South Africa</option>
+                    <option value="worldwide">Multiple Countries</option>
                 </select>
                 
                 <label for="typeFilter">💼 Type:</label>
@@ -424,7 +494,7 @@
             </div>
         </div>
 
-        <div class="countries-grid" id="countriesGrid">
+        <div id="countriesContainer">
             <!-- Ireland Card -->
             <div class="country-card" data-country="ireland" data-visa="easy">
                 <div class="country-header" onclick="toggleCard(this.parentElement)">
@@ -436,7 +506,13 @@
                     <span class="visa-badge visa-easy">No Visa (EU)</span>
                 </div>
                 <div class="country-content">
-                    <p style="margin-bottom: 15px;"><strong>✨ Easiest option for EU nationals!</strong> No visa required and you can earn money. Eligible for Erasmus grant.</p>
+                    <p style="margin-bottom: 15px;"><strong>✨ BY FAR YOUR EASIEST OPTION!</strong> If you are an EU national, you don't need a visa and you are allowed to earn money. Very diverse country from large (expensive) cities to totally isolated farms. Eligible for Erasmus grant if you do your placement in Ireland.</p>
+                    
+                    <div class="important-note">
+                        <strong>Erasmus+ Grant Available:</strong> If you plan on going abroad after May 31, 2023, you might be eligible for an Erasmus+ grant that covers a maximum of 100 days: <a href="http://www.erasmusbeurs.nl/erasmusbeurs-aanvragen/" target="_blank">Apply for Erasmus grant</a>
+                    </div>
+
+                    <h3 style="color: var(--primary-dark); margin-top: 25px;">Organizations Interested in Our Students</h3>
                     
                     <div class="placement-item" data-type="volunteer">
                         <div class="placement-header">
@@ -445,7 +521,7 @@
                                 <span class="tag tag-volunteer">Volunteer</span>
                             </div>
                         </div>
-                        <p class="placement-description">Charity shop work and office-based roles in admin/events. They've expressed interest in our students!</p>
+                        <p class="placement-description">Very interested in volunteers. A lot of retail work available in their charity shops, but they also sometimes have office based roles such as in admin and/or (fashion/charity) events.</p>
                         <a href="https://www.oxfamireland.org/getinvolved/volunteer" class="placement-link" target="_blank">Learn more</a>
                     </div>
 
@@ -457,7 +533,24 @@
                                 <span class="tag tag-housing">Potential Housing</span>
                             </div>
                         </div>
-                        <p class="placement-description">Teaching assistant roles April-June, then admin/preparation work. Looking for flexible, communicative students. Contact: mdooleydeputyprincipal@preswex.ie</p>
+                        <p class="placement-description">Interested in having teaching assistants from April until the end of the school year, and then after June 3rd, help with admin, preparation and housekeeping. Looking for people with good communication skills, who can use their own initiative and are flexible. Potentially demanding but rewarding opportunity.</p>
+                        <div class="contact-info">
+                            <strong>Contact:</strong> Mary Dooley - <a href="mailto:mdooleydeputyprincipal@preswex.ie">mdooleydeputyprincipal@preswex.ie</a>
+                        </div>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">The Irish School of Archaeology</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Looking for tutors and camp facilitators working with children aged 6-12. The positions are not paid.</p>
+                        <div class="contact-info">
+                            <strong>Apply via email:</strong> <a href="mailto:info@sia.ie">info@sia.ie</a>
+                        </div>
+                        <a href="https://sia.ie/about-the-school-of-irish-archaeology/" class="placement-link" target="_blank">Visit website</a>
                     </div>
 
                     <div class="placement-item" data-type="paid">
@@ -465,11 +558,61 @@
                             <span class="placement-title">Killary Adventure Company</span>
                             <div class="placement-tags">
                                 <span class="tag tag-paid">Paid</span>
-                                <span class="tag tag-housing">Housing Included</span>
+                                <span class="tag tag-housing">Housing Possible</span>
                             </div>
                         </div>
-                        <p class="placement-description">Remote outdoor adventure center. Need experience with climbing/kayaking/archery. 3+ months positions. Note: Very remote (8km to nearest shop, slow internet).</p>
+                        <p class="placement-description">Interested in students with perfect English, with climbing/kayaking/archery/etc experience, and experience entertaining children outdoors. Very remote place (nearest shop 8 km away, very slow internet) that offers paid positions for 3+ months (the longer the better) for people who like to get their hands dirty out in the open.</p>
                         <a href="http://killaryadventure.com" class="placement-link" target="_blank">Visit website</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Irish Cancer Society</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Have volunteer positions in their charity shops for the number of weeks and hours our students need.</p>
+                        <div class="contact-info">
+                            <strong>Dublin branch:</strong> Monica Verweijen - <a href="mailto:mverweijen@irishcancer.ie">mverweijen@irishcancer.ie</a><br>
+                            <strong>Other branches:</strong> <a href="https://www.cancer.ie/ways-to-help/volunteer" target="_blank">View volunteer opportunities</a>
+                        </div>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">St Mogue's College, County Cavan</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Teaching Assistant</span>
+                                <span class="tag tag-housing">Accommodation May Be Included</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Very interested in having a student teacher. Accommodation may be included (so expect hard work!).</p>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Dundalk Grammar School</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Teaching</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Private school with boarding options for senior school. They have indicated interest in providing placements.</p>
+                        <div class="contact-info">
+                            <strong>Contact:</strong> <a href="mailto:admin@dgs.ie">admin@dgs.ie</a>
+                        </div>
+                        <a href="https://www.dgs.ie" class="placement-link" target="_blank">Visit website</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Oxfam Dublin (Thrift Store)</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Volunteering position - you would need to find your own place to stay.</p>
+                        <a href="https://www.oxfamireland.org/get-involved/volunteer" class="placement-link" target="_blank">Apply to volunteer</a>
                     </div>
 
                     <div class="placement-item" data-type="volunteer">
@@ -477,87 +620,27 @@
                             <span class="placement-title">Four Courts Hostel, Dublin</span>
                             <div class="placement-tags">
                                 <span class="tag tag-volunteer">Volunteer</span>
-                                <span class="tag tag-recommended">Good Reviews</span>
+                                <span class="tag tag-recommended">Consistently Good Reviews</span>
                             </div>
                         </div>
-                        <p class="placement-description">Popular hostel with consistently positive feedback from our students.</p>
+                        <p class="placement-description">Hostel in Dublin which often accepts our students. We have heard only good things!</p>
                         <a href="http://www.fourcourtshostel.com" class="placement-link" target="_blank">Visit website</a>
                     </div>
 
-                    <div class="placement-item" data-type="volunteer">
-                        <div class="placement-header">
-                            <span class="placement-title">Irish School of Archaeology</span>
-                            <div class="placement-tags">
-                                <span class="tag tag-volunteer">Volunteer</span>
-                            </div>
-                        </div>
-                        <p class="placement-description">Tutors and camp facilitators for children aged 6-12. Apply via email: info@sia.ie</p>
-                        <a href="https://sia.ie/about-the-school-of-irish-archaeology/" class="placement-link" target="_blank">Learn more</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- United States Card -->
-            <div class="country-card" data-country="usa" data-visa="required">
-                <div class="country-header" onclick="toggleCard(this.parentElement)">
-                    <h2>
-                        <span class="country-flag">🇺🇸</span>
-                        United States
-                        <span class="expand-indicator">▼</span>
-                    </h2>
-                    <span class="visa-badge visa-required">J-1 Visa Required</span>
-                </div>
-                <div class="country-content">
-                    <p style="margin-bottom: 15px;"><strong>⚠️ Important:</strong> J-1 visa required. Do NOT volunteer on tourist visa - it's illegal! Summer camps are easier for visas.</p>
-                    
-                    <div class="placement-item" data-type="paid">
-                        <div class="placement-header">
-                            <span class="placement-title">Camp Cobossee (Maine)</span>
-                            <div class="placement-tags">
-                                <span class="tag tag-paid">Paid</span>
-                                <span class="tag tag-housing">Housing Included</span>
-                                <span class="tag tag-recommended">HU Partnership</span>
-                            </div>
-                        </div>
-                        <p class="placement-description">Our partner camp! We'll introduce this during the course. Start applying in December for summer positions.</p>
+                    <div class="section-divider">
+                        <h3 style="color: var(--primary-dark);">Other Leads in Ireland</h3>
                     </div>
 
-                    <div class="placement-item" data-type="paid">
-                        <div class="placement-header">
-                            <span class="placement-title">Fresh Air Fund</span>
-                            <div class="placement-tags">
-                                <span class="tag tag-paid">Paid</span>
-                                <span class="tag tag-housing">Housing Included</span>
-                                <span class="tag tag-recommended">Recommended</span>
-                            </div>
-                        </div>
-                        <p class="placement-description">Great summer camp opportunity. Students consistently return with positive experiences.</p>
-                        <a href="http://www.freshair.org/work-at-camp" class="placement-link" target="_blank">Apply here</a>
-                    </div>
+                    <ul class="resource-list">
+                        <li><a href="https://volunteerdlr.ie/contact_us/" target="_blank">Volunteer DLR</a> - Volunteering opportunities</li>
+                        <li><a href="https://www.barretstown.org/volunteers" target="_blank">Barretstown</a> - Help Create Magic Moments for Seriously Ill Children in Ireland</li>
+                        <li><a href="https://www.studentvolunteer.ie" target="_blank">Student Volunteer Ireland</a> - Short term placements in different categories (education, environment, arts, etc)</li>
+                        <li><a href="https://helpstay.com" target="_blank">HelpStay</a> - Type in 'Ireland' for volunteer placements (farms, hostels, language schools, etc)</li>
+                    </ul>
 
-                    <div class="placement-item" data-type="paid">
-                        <div class="placement-header">
-                            <span class="placement-title">CCUSA</span>
-                            <div class="placement-tags">
-                                <span class="tag tag-paid">Paid</span>
-                                <span class="tag tag-housing">Housing Included</span>
-                            </div>
-                        </div>
-                        <p class="placement-description">Summer camps in US and Canada. ⚠️ Avoid their "work experience" option - stick to summer camps only!</p>
-                        <a href="http://www.ccusa.com" class="placement-link" target="_blank">Visit CCUSA</a>
-                    </div>
-
-                    <div class="placement-item" data-type="paid">
-                        <div class="placement-header">
-                            <span class="placement-title">Camp Leaders</span>
-                            <div class="placement-tags">
-                                <span class="tag tag-paid">Paid</span>
-                                <span class="tag tag-housing">Housing Included</span>
-                            </div>
-                        </div>
-                        <p class="placement-description">Another summer camp placement organization with J-1 visa sponsorship.</p>
-                        <a href="https://www.campleaders.com/ww" class="placement-link" target="_blank">Visit website</a>
-                    </div>
+                    <p style="margin-top: 20px; padding: 15px; background: #e0f2fe; border-radius: 8px;">
+                        <strong>Remember:</strong> Since you have a right to work in Ireland, you can email any company or organization you're interested in!
+                    </p>
                 </div>
             </div>
 
@@ -572,7 +655,13 @@
                     <span class="visa-badge visa-required">Very Difficult Post-Brexit</span>
                 </div>
                 <div class="country-content">
-                    <p style="margin-bottom: 15px;"><strong>⚠️ Brexit Alert:</strong> UK placements are extremely difficult now. Only Tier 5 authorized organizations can sponsor visas. Consider Ireland instead!</p>
+                    <div class="danger-box">
+                        <h3>⚠️ Brexit Alert</h3>
+                        <p><strong>After Brexit, the UK government has made going to the UK very difficult, and potentially almost impossible!</strong> Ireland is a good alternative.</p>
+                        <p>Most organisations in the UK won't be able to sponsor your post-Brexit visa. You would need to be "Tier 5 authorised" - and that is a very short list.</p>
+                    </div>
+
+                    <h3 style="color: var(--primary-dark); margin-top: 25px;">Currently Approved Tier 5 Government Authorised Exchange Schemes (June 2021)</h3>
                     
                     <div class="placement-item" data-type="volunteer">
                         <div class="placement-header">
@@ -581,7 +670,10 @@
                                 <span class="tag tag-volunteer">Volunteer</span>
                             </div>
                         </div>
-                        <p class="placement-description">Student-run organization. Tier 5 authorized. Affordable but limited guidance. Contact Utrecht branch.</p>
+                        <p class="placement-description">Run by students, with opportunities all over the world, though you may have to be flexible to find one that suits you as many of them (not all!) are business related. Affordable, but don't expect a lot of guidance. In the UK, these would usually be volunteer opportunities.</p>
+                        <div class="contact-info">
+                            <strong>Contact:</strong> AIESEC Utrecht branch for info - they may also give a presentation which will be posted under modules → week 1
+                        </div>
                     </div>
 
                     <div class="placement-item" data-type="paid">
@@ -591,8 +683,37 @@
                                 <span class="tag tag-paid">Paid Programs</span>
                             </div>
                         </div>
-                        <p class="placement-description">Well-established but expensive. Tier 5 authorized.</p>
+                        <p class="placement-description">Old and well established, but pricey.</p>
                         <a href="https://bunac.org" class="placement-link" target="_blank">Visit BUNAC</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">British Council - Modern Language Assistant</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Great opportunity IF you happen to speak fluent French, German, Italian, Spanish, or Mandarin and IF your home country is on the list.</p>
+                        <a href="https://www.britishcouncil.org/study-work-abroad/in-uk/teach-language-uk" class="placement-link" target="_blank">Learn more</a>
+                    </div>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Castle Rock Hostel, Edinburgh</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <a href="https://www.castlerockedinburgh.com/" class="placement-link" target="_blank">Visit website</a>
+                    </div>
+
+                    <div class="important-note">
+                        <strong>Update 2024:</strong> You are now allowed to volunteer for up to 30 days. If you have family in the UK you might want to consider staying with them. You can then volunteer for 30 days and stay with family for the remainder (42 days) of your stay abroad. For longer volunteering: <a href="https://www.gov.uk/temporary-worker-charity-worker-visa" target="_blank">Charity Worker Visa info</a>
+                    </div>
+
+                    <div class="section-divider">
+                        <h3 style="color: var(--primary-dark);">Options If Visa Situation Changes</h3>
                     </div>
 
                     <div class="placement-item" data-type="paid">
@@ -600,22 +721,128 @@
                             <span class="placement-title">PGL Camps</span>
                             <div class="placement-tags">
                                 <span class="tag tag-paid">£482/month</span>
-                                <span class="tag tag-housing">Free Food & Housing</span>
+                                <span class="tag tag-housing">Free Food & Accommodation</span>
                             </div>
                         </div>
-                        <p class="placement-description">Youth camps. Now accepts Youth Mobility Scheme visa (18+). Quick online application process.</p>
+                        <p class="placement-description"><strong>Update 2023:</strong> PGL now takes people on the Youth Mobility Scheme visa if you're 18+ years old. Students can apply for internships direct through their online application process. Register on website, answer a few questions and upload a CV. Takes less than 10 minutes.</p>
+                        <a href="https://www.gov.uk/youth-mobility" class="placement-link" target="_blank">Youth Mobility info</a>
                         <a href="http://www.pgl.co.uk" class="placement-link" target="_blank">Apply to PGL</a>
                     </div>
 
                     <div class="placement-item" data-type="volunteer">
                         <div class="placement-header">
-                            <span class="placement-title">30-Day Volunteer Option</span>
+                            <span class="placement-title">The Monkey Sanctuary</span>
                             <div class="placement-tags">
                                 <span class="tag tag-volunteer">Volunteer</span>
+                                <span class="tag tag-housing">Cheap Room & Board</span>
                             </div>
                         </div>
-                        <p class="placement-description">New 2024 update: You can volunteer for up to 30 days without a work visa. Consider combining with family stay.</p>
+                        <p class="placement-description">Volunteer organization where room and board are provided cheaply in exchange for working with monkeys (Cornwall, England)</p>
+                        <a href="http://www.monkeysanctuary.org" class="placement-link" target="_blank">Visit website</a>
                     </div>
+
+                    <div class="section-divider">
+                        <h3 style="color: var(--primary-dark);">Other UK Organizations and Helpful Websites</h3>
+                        <p style="margin: 10px 0; color: var(--danger);">Note: Many may not be able to sponsor visas. Always verify visa sponsorship first!</p>
+                    </div>
+
+                    <ul class="resource-list">
+                        <li><strong>Education First:</strong> Study abroad opportunities and possibly jobs teaching English - <a href="http://www.ef.com" target="_blank">www.ef.com</a></li>
+                        <li><strong>National Trust:</strong> Shorter and longer term volunteer placements - <a href="https://www.nationaltrust.org.uk/volunteer" target="_blank">Volunteer with National Trust</a></li>
+                        <li><a href="http://www.transitionsabroad.com/listings/work/shortterm/uk.shtml" target="_blank">Transitions Abroad</a> - Links to short term and summer jobs in the UK and Ireland</li>
+                        <li><a href="https://www.countryside-jobs.com/volunteers/intro" target="_blank">Countryside Jobs</a> - Lists of organizations needing volunteers for countryside work</li>
+                        <li><a href="https://helpstay.com" target="_blank">HelpStay</a> - Type in 'UK' for volunteer placements (check visa requirements)</li>
+                        <li><a href="https://www.studentjob.co.uk/" target="_blank">Student Job UK</a> - Part-time and summer jobs all over the UK</li>
+                        <li><a href="https://www.seasonworkers.com/summerjobs/resorts/summer-jobs-england.aspx" target="_blank">Season Workers</a> - Summer jobs in camps, outdoor adventure, holiday parks</li>
+                        <li><a href="http://www.pilgrims.co.uk" target="_blank">Pilgrims</a> - EFL teacher training courses (2-3 week programs)</li>
+                        <li><a href="http://www.e4s.co.uk" target="_blank">E4S</a> - Various jobs including camps like PGL, Henley Royal Regatta staff, London flower show staff</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- United States Card -->
+            <div class="country-card" data-country="usa" data-visa="required">
+                <div class="country-header" onclick="toggleCard(this.parentElement)">
+                    <h2>
+                        <span class="country-flag">🇺🇸</span>
+                        United States
+                        <span class="expand-indicator">▼</span>
+                    </h2>
+                    <span class="visa-badge visa-required">J-1 Visa Required</span>
+                </div>
+                <div class="country-content">
+                    <div class="danger-box">
+                        <h3>⚠️ Visa Warning</h3>
+                        <p>It is NOT always easy to get a visa for the US - students seem to usually need a J-1 visa for these placements. Before accepting a placement, discuss visas with the organization. <strong>Please don't volunteer on a tourist visa - it's VERY illegal!</strong></p>
+                        <p><strong>Consider Canada as an alternative</strong> - visas are sometimes easier to obtain or not needed, Canadians are famous for being friendly, and it's generally safer.</p>
+                    </div>
+
+                    <div class="important-note">
+                        <strong>Non-EU Passport?</strong> If you need an American visa and have a non-EU passport, make sure to ask us for a letter explaining you are travelling for your studies, as visas have been rejected for no apparent reason in the past!
+                    </div>
+
+                    <h3 style="color: var(--primary-dark); margin-top: 25px;">Our Recommendations - Summer Camps</h3>
+                    <p>Summer camps are (comparatively) easy to get visas for and look great on your CV. You will be kept very busy but you get paid and students almost always come back having loved their experience.</p>
+                    
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Camp Cobossee (Maine)</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                                <span class="tag tag-partnership">HU Partnership</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">During the course, we will introduce Camp Cobossee and our contact there. If you're interested after learning more about this camp in Maine, please tell your teacher after class and they'll tell you what to do next!</p>
+                        <p style="color: var(--warning); font-weight: 600;">The best time to start applying for a summer camp is December!</p>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Fresh Air Fund</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                                <span class="tag tag-recommended">Highly Recommended</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">This is a great camp in the United States.</p>
+                        <a href="http://www.freshair.org/work-at-camp" class="placement-link" target="_blank">Apply here</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">CCUSA</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Summer camps in the US and Canada. <strong style="color: var(--danger);">We strongly recommend that you avoid the "work experience" option due to negative experiences in the past - summer camps, however, are recommended.</strong></p>
+                        <a href="http://www.ccusa.com" class="placement-link" target="_blank">Visit CCUSA</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Camp Leaders</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-paid">Paid</span>
+                                <span class="tag tag-housing">Housing Included</span>
+                            </div>
+                        </div>
+                        <a href="https://www.campleaders.com/ww" class="placement-link" target="_blank">Visit Camp Leaders</a>
+                    </div>
+
+                    <div class="section-divider">
+                        <h3 style="color: var(--primary-dark);">Other Leads (Mostly Paid Programs - You Pay Them)</h3>
+                        <p>We'll discuss why in class</p>
+                    </div>
+
+                    <ul class="resource-list">
+                        <li><strong>US Government J-1 Visa Sponsors:</strong> Long list of sponsoring organizations - <a href="https://j1visa.state.gov/participants/how-to-apply/sponsor-search/?program=Summer%20Work%20Travel" target="_blank">Search J-1 sponsors</a></li>
+                        <li><strong>Stage-USA:</strong> Internships, traineeships and au pair placements - <a href="https://www.stage-usa.nl/" target="_blank">www.stage-usa.nl</a></li>
+                        <li><strong>InterExchange:</strong> <a href="http://www.interexchange.org" target="_blank">www.interexchange.org</a></li>
+                    </ul>
                 </div>
             </div>
 
@@ -630,29 +857,37 @@
                     <span class="visa-badge visa-varies">Easier than USA</span>
                 </div>
                 <div class="country-content">
-                    <p style="margin-bottom: 15px;"><strong>Great alternative to USA!</strong> Generally safer, friendly people, easier visa process. Note: Quebec is French-speaking (not eligible).</p>
+                    <p style="margin-bottom: 15px;"><strong>Great alternative to the USA!</strong> Visas may be easier to obtain. From large cities to spectacular national parks, Canada has something for everyone. <strong>Bear in mind that Quebec is French-speaking and therefore not an option for your Stay Abroad.</strong></p>
                     
+                    <div class="important-note">
+                        <strong>Visa Information:</strong> <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/educational-institutions/volunteer-work-conducted-foreign-students-when-work-permit-esdc-confirmation-required.html" target="_blank">Check volunteer visa requirements</a>
+                    </div>
+
                     <div class="placement-item" data-type="paid">
                         <div class="placement-header">
                             <span class="placement-title">Camp Canada</span>
                             <div class="placement-tags">
-                                <span class="tag tag-paid">Min. 1000 CAD</span>
+                                <span class="tag tag-paid">Min. 1000 CAD guaranteed</span>
                                 <span class="tag tag-housing">Housing Included</span>
                             </div>
                         </div>
-                        <p class="placement-description">Summer camp placements with visa assistance. Guaranteed minimum pay, can negotiate higher with camps.</p>
+                        <p class="placement-description">Once you get matched, you can talk to the summer camp itself about your pay rate.</p>
+                        <div class="contact-info">
+                            <strong>Cost overview:</strong> <a href="https://www.campcanada.co.uk/your-costs-and-whats-included" target="_blank">View costs and what's included</a><br>
+                            <strong>Reddit discussion about costs:</strong> <a href="https://www.reddit.com/r/summercamp/comments/1bu43kr/comment/kzvc3py/" target="_blank">Community feedback</a>
+                        </div>
                         <a href="https://www.campcanada.co.uk/" class="placement-link" target="_blank">Visit Camp Canada</a>
                     </div>
 
                     <div class="placement-item" data-type="paid">
                         <div class="placement-header">
-                            <span class="placement-title">Ontario Camps (Direct)</span>
+                            <span class="placement-title">Ontario Camps (Direct Application)</span>
                             <div class="placement-tags">
                                 <span class="tag tag-paid">Higher Pay</span>
                             </div>
                         </div>
-                        <p class="placement-description">Apply directly to camps without agency = more money. But you'll need to arrange visa yourself.</p>
-                        <a href="https://ontariocampsassociation.ca/work-at-camp/" class="placement-link" target="_blank">Browse camps</a>
+                        <p class="placement-description">Look for camps in Ontario without a mediating company. This means no assistance with the VISA process, but once you have that figured out it should lead to you making more money than taking the mediating company route. If you want more assistance we do recommend you go with a company like Camp Canada, CCUSA, Camp America.</p>
+                        <a href="https://ontariocampsassociation.ca/work-at-camp/" class="placement-link" target="_blank">Browse Ontario camps</a>
                     </div>
 
                     <div class="placement-item" data-type="paid">
@@ -663,9 +898,19 @@
                                 <span class="tag tag-housing">Housing Included</span>
                             </div>
                         </div>
-                        <p class="placement-description">Summer camps in both US and Canada. Provides visa assistance.</p>
+                        <p class="placement-description">Summer camps in both US and Canada.</p>
                         <a href="http://www.ccusa.com" class="placement-link" target="_blank">Visit CCUSA</a>
                     </div>
+
+                    <div class="section-divider">
+                        <h3 style="color: var(--primary-dark);">Other Canadian Opportunities</h3>
+                    </div>
+
+                    <ul class="resource-list">
+                        <li><a href="https://helpstay.com" target="_blank">HelpStay</a> - Type in 'Canada' for volunteer placements (hostels, outdoor work)</li>
+                        <li><a href="https://www.ontario.ca/page/volunteering-ontario" target="_blank">Volunteering Ontario</a></li>
+                        <li><a href="https://www.gooverseas.com/volunteer-abroad/canada" target="_blank">Go Overseas - Canada</a></li>
+                    </ul>
                 </div>
             </div>
 
@@ -680,8 +925,30 @@
                     <span class="visa-badge visa-required">Working Holiday Visa</span>
                 </div>
                 <div class="country-content">
-                    <p style="margin-bottom: 15px;"><strong>Working Holiday visa required.</strong> Consider combining with summer holidays as 10 weeks is short for this destination. With visa, you can apply for jobs directly!</p>
+                    <p style="margin-bottom: 15px;"><strong>Working Holiday visa required.</strong> You would likely need a Working Holiday visa, which you can use to get (low) paid backpacker-type jobs. Perhaps use the summer holidays as well as ten weeks is not a lot of time.</p>
                     
+                    <div class="important-note">
+                        <strong>Visa Information:</strong><br>
+                        Australia: <a href="https://www.australia.com/en/youth-travel/working-holiday-visa/faq.html" target="_blank">Working Holiday FAQ</a> | 
+                        <a href="https://immi.homeaffairs.gov.au/visas/working-in-australia/short-stay-work-visas" target="_blank">Short stay work visas</a><br>
+                        New Zealand: <a href="https://www.immigration.govt.nz/new-zealand-visas/options/work/thinking-about-coming-to-new-zealand-to-work/working-holiday-visa" target="_blank">Working Holiday visa info</a>
+                    </div>
+
+                    <p style="padding: 15px; background: #e0f2fe; border-radius: 8px;">
+                        <strong>Tip:</strong> If you have a visa, you probably don't have to use an official organization. Since you will have the right to work, you should be able to just apply for jobs that you are interested in. Many people fly into Melbourne or Sydney and then apply for jobs from there. It's risky (financially), but it can be a lot of fun.
+                    </p>
+
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Australian Backpackers</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Volunteer placement opportunities in Australia</p>
+                        <a href="http://www.australianbackpackers.nl" class="placement-link" target="_blank">Visit website</a>
+                    </div>
+
                     <div class="placement-item" data-type="volunteer">
                         <div class="placement-header">
                             <span class="placement-title">Go Volunteer Australia</span>
@@ -689,32 +956,41 @@
                                 <span class="tag tag-volunteer">Volunteer</span>
                             </div>
                         </div>
-                        <p class="placement-description">Database of volunteer opportunities. You'll need to arrange accommodation separately.</p>
+                        <p class="placement-description">Database of volunteer opportunities in Australia. You would still need to find a place to stay, but if you have someone to stay with, this is a way to find volunteer work.</p>
                         <a href="http://www.govolunteer.com.au" class="placement-link" target="_blank">Browse opportunities</a>
                     </div>
 
                     <div class="placement-item" data-type="paid">
                         <div class="placement-header">
-                            <span class="placement-title">Hostel Work</span>
+                            <span class="placement-title">Stage Reizen</span>
                             <div class="placement-tags">
-                                <span class="tag tag-volunteer">Usually Unpaid</span>
-                                <span class="tag tag-housing">Free Board</span>
+                                <span class="tag tag-paid">Placement Service</span>
                             </div>
                         </div>
-                        <p class="placement-description">Contact hostels directly through YHA. Most offer free accommodation in exchange for work.</p>
-                        <a href="https://www.yha.com.au" class="placement-link" target="_blank">YHA Australia</a>
+                        <p class="placement-description">An organization that can help you find placements in Australia/New Zealand</p>
+                        <a href="http://www.stagereizen.nl" class="placement-link" target="_blank">Visit Stage Reizen</a>
                     </div>
 
                     <div class="placement-item" data-type="volunteer">
                         <div class="placement-header">
-                            <span class="placement-title">GoEco Conservation</span>
+                            <span class="placement-title">GoEco</span>
                             <div class="placement-tags">
-                                <span class="tag tag-volunteer">Volunteer</span>
+                                <span class="tag tag-volunteer">Conservation</span>
                             </div>
                         </div>
-                        <p class="placement-description">Great Barrier Reef conservation, wildlife sanctuary work. Programs from 2-12 weeks.</p>
+                        <p class="placement-description">For people eager to travel and contribute to the community, wildlife and environment. Three projects in Australia: Great Barrier Reef Conservation (12 days), Wild Animal Sanctuary (2 weeks), Australian Conservation Experience (2-12 weeks). One in New Zealand: New Zealand Conservation Experience (2-12 weeks)</p>
                         <a href="http://www.goeco.com" class="placement-link" target="_blank">Visit GoEco</a>
                     </div>
+
+                    <div class="section-divider">
+                        <h3 style="color: var(--primary-dark);">Hostel Work</h3>
+                    </div>
+
+                    <p>Contact hostels directly through YHA. Most offer free accommodation in exchange for work.</p>
+                    <ul class="resource-list">
+                        <li>Australia: <a href="https://www.yha.com.au" target="_blank">YHA Australia</a></li>
+                        <li>New Zealand: <a href="https://www.yha.co.nz" target="_blank">YHA New Zealand</a></li>
+                    </ul>
                 </div>
             </div>
 
@@ -729,28 +1005,106 @@
                     <span class="visa-badge visa-varies">Research Required</span>
                 </div>
                 <div class="country-content">
-                    <p style="margin-bottom: 15px;"><strong>⚠️ Important:</strong> NO orphanage volunteering allowed (harmful practice). Research opportunities carefully - avoid "voluntourism" that takes jobs from locals.</p>
-                    
-                    <div class="placement-item" data-type="volunteer">
-                        <div class="placement-header">
-                            <span class="placement-title">GoEco Wildlife Projects</span>
-                            <div class="placement-tags">
-                                <span class="tag tag-volunteer">Volunteer</span>
-                            </div>
-                        </div>
-                        <p class="placement-description">26 projects available, mostly wildlife conservation. 1-12 week programs. Avoid any orphanage projects!</p>
-                        <a href="http://www.goeco.com" class="placement-link" target="_blank">Browse projects</a>
+                    <div class="danger-box">
+                        <h3>⚠️ Important Warning</h3>
+                        <p><strong>You are NOT allowed to volunteer at an orphanage in South Africa.</strong> Here's why: <a href="https://www.savethechildren.ca/say-no-to-orphanage-volunteering/" target="_blank">Say No to Orphanage Volunteering</a></p>
+                        <p>Be careful about doing volunteer work in South Africa (carefully research the opportunities) as there are sometimes complaints due to volunteers taking on work that could be done by residents.</p>
+                        <p>Many of the opportunities in South Africa are ones that you either pay a lot of money for and/or that fall under 'voluntourism'. Please do your research carefully.</p>
                     </div>
 
                     <div class="placement-item" data-type="volunteer">
                         <div class="placement-header">
-                            <span class="placement-title">Research Carefully</span>
+                            <span class="placement-title">GoEco</span>
                             <div class="placement-tags">
-                                <span class="tag tag-volunteer">Various</span>
+                                <span class="tag tag-volunteer">Wildlife Conservation</span>
                             </div>
                         </div>
-                        <p class="placement-description">Many opportunities require payment and may fall under "voluntourism". Ensure your work doesn't take jobs from local residents.</p>
+                        <p class="placement-description">For people eager to travel and contribute to the community, wildlife and environment. They offer 26 projects in South Africa, ranging from 1-12 weeks, lots of wildlife. <strong style="color: var(--danger);">Be careful - there are also orphanage projects on here (which are harmful and therefore not allowed).</strong></p>
+                        <a href="http://www.goeco.com" class="placement-link" target="_blank">Visit GoEco</a>
                     </div>
+
+                    <p>You could also try the 'worldwide' links in the next section.</p>
+                </div>
+            </div>
+
+            <!-- Multiple Countries/Worldwide Card -->
+            <div class="country-card" data-country="worldwide" data-visa="varies">
+                <div class="country-header" onclick="toggleCard(this.parentElement)">
+                    <h2>
+                        <span class="country-flag">🌐</span>
+                        Multiple Countries / Worldwide
+                        <span class="expand-indicator">▼</span>
+                    </h2>
+                    <span class="visa-badge visa-varies">Varies by Country</span>
+                </div>
+                <div class="country-content">
+                    <h3 style="color: var(--primary-dark); margin-top: 0;">General Organizations</h3>
+                    
+                    <div class="placement-item" data-type="volunteer">
+                        <div class="placement-header">
+                            <span class="placement-title">Travel Active</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Volunteer</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Volunteer work opportunities all over the world</p>
+                        <a href="http://www.travelactive.nl" class="placement-link" target="_blank">Visit Travel Active</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Homestay (Accommodation)</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-housing">Accommodation Service</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">This site has been used by students in the past to arrange accommodations</p>
+                        <a href="http://www.homestay.com" class="placement-link" target="_blank">Visit Homestay</a>
+                    </div>
+
+                    <div class="placement-item" data-type="paid">
+                        <div class="placement-header">
+                            <span class="placement-title">Singapore School Placement</span>
+                            <div class="placement-tags">
+                                <span class="tag tag-volunteer">Teaching</span>
+                            </div>
+                        </div>
+                        <p class="placement-description">Stagelopen op een school. Contact Anouk Cramer for organization details and accommodation/cost information.</p>
+                    </div>
+
+                    <div class="section-divider">
+                        <h3 style="color: var(--primary-dark);">Hostels Worldwide</h3>
+                    </div>
+
+                    <p>If you would like to work at a hostel, the best thing to do is to find one using the YHA website and phone or email the hostel directly. They usually do not pay very much, if at all, but most do offer free board.</p>
+
+                    <ul class="resource-list">
+                        <li><strong>WorldPackers:</strong> <a href="https://www.worldpackers.com/" target="_blank">www.worldpackers.com</a></li>
+                        <li><strong>Hostel Jobs:</strong> <a href="https://hosteljobs.net/" target="_blank">hosteljobs.net</a></li>
+                        <li><strong>Gumtree:</strong> <a href="https://www.gumtree.com/" target="_blank">www.gumtree.com</a></li>
+                        <li><strong>UK Hostels:</strong> <a href="https://www.yha.org.uk" target="_blank">YHA UK</a> (Brexit means this probably isn't possible)</li>
+                        <li><strong>Australia Hostels:</strong> <a href="https://www.yha.com.au" target="_blank">YHA Australia</a></li>
+                        <li><strong>New Zealand Hostels:</strong> <a href="https://www.yha.co.nz" target="_blank">YHA New Zealand</a></li>
+                        <li><strong>USA Hostels:</strong> <a href="https://www.hiusa.org" target="_blank">HI USA</a> (bear in mind that visas may not be easy to get)</li>
+                    </ul>
+
+                    <div class="section-divider">
+                        <h3 style="color: var(--primary-dark);">Additional Resources</h3>
+                        <p>Sites offering reviews, information and connections with teaching, studying and volunteer opportunities all over the world. Some include reviews of students who have participated in particular programs:</p>
+                    </div>
+
+                    <ul class="resource-list">
+                        <li><strong>Go Abroad:</strong> <a href="http://www.goabroad.com" target="_blank">www.goabroad.com</a></li>
+                        <li><strong>Go Overseas:</strong> <a href="http://www.gooverseas.com" target="_blank">www.gooverseas.com</a></li>
+                        <li><strong>Be More:</strong> <a href="http://www.be-more.nl" target="_blank">www.be-more.nl</a></li>
+                        <li><strong>Activity International:</strong> <a href="http://www.activityinternational.nl" target="_blank">www.activityinternational.nl</a></li>
+                        <li><strong>AIESEC UK:</strong> <a href="http://www.aiesec.co.uk" target="_blank">www.aiesec.co.uk</a></li>
+                        <li><strong>Travellers Worldwide:</strong> <a href="http://www.travellersworldwide.com" target="_blank">www.travellersworldwide.com</a></li>
+                        <li><strong>CIEE:</strong> <a href="http://www.ciee.org" target="_blank">www.ciee.org</a></li>
+                        <li><strong>Study Travel:</strong> <a href="http://www.studytravel.nl" target="_blank">www.studytravel.nl</a></li>
+                        <li><strong>Study Abroad:</strong> <a href="http://www.studyabroad.com" target="_blank">www.studyabroad.com</a></li>
+                        <li><strong>Kilroy Travels:</strong> <a href="http://www.travels.kilroyworld.nl" target="_blank">www.travels.kilroyworld.nl</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -788,7 +1142,24 @@
                     <h3>Best Bet</h3>
                     <p>Ireland for EU nationals - no visa needed and you can work legally!</p>
                 </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🚫</div>
+                    <h3>Never Work Illegally</h3>
+                    <p>Working without proper visa is illegal and can have serious consequences!</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">📧</div>
+                    <h3>Direct Contact</h3>
+                    <p>In countries where you can work legally, don't hesitate to contact organizations directly!</p>
+                </div>
             </div>
+        </div>
+
+        <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; margin-top: 40px;">
+            <h3 style="color: var(--primary-dark); margin-bottom: 15px;">📚 Remember</h3>
+            <p>This document provides information on how to find a placement. Most countries include a section on visas. These are organizations where our students have found successful stay abroad opportunities in the past or that may be helpful to you.</p>
+            <p style="margin-top: 15px;">Bear in mind that you are allowed to go to more countries than the ones on the list - see "Where can I go" on the Canvas under Course information/testing. We can't give you accurate information on all of them, but if you find any great organisations in those countries, please let us know.</p>
+            <p style="margin-top: 20px; font-weight: 600;">Good luck with your search!</p>
         </div>
     </div>
 
@@ -867,6 +1238,14 @@
                 applyFilters();
             }
         });
+
+        // Auto-expand if only one card is visible after filtering
+        function checkSingleCard() {
+            const visibleCards = document.querySelectorAll('.country-card:not([style*="display: none"])');
+            if (visibleCards.length === 1) {
+                visibleCards[0].classList.add('expanded');
+            }
+        }
     </script>
 </body>
 </html>
